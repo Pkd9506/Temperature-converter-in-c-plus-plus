@@ -1,156 +1,80 @@
 # include <iostream> 
-# include <cmath>
-
-int addition () {
-    int num1, num2, result;
-
-    std::cout << "Enter the first number" << '\n';
-    std::cin >> num1;
-    
-    std::cout << "Enter the second number" << '\n';
-    std::cin >> num2;
-
-    result = num1 + num2;
-    std::cout << "The sum of the two numbers is " << result << '\n';
-}
-
-int subtraction () {
-    int num1, num2, result;
-
-    std::cout << "Enter the first number" << '\n';
-    std::cin >> num1;
-    
-    std::cout << "Enter the second number" << '\n';
-    std::cin >> num2;
-
-    result = num1 - num2;
-    std::cout << "The difference of the two numbers is " << result << '\n';
-}
-
-int multiplication () {
-    int num1, num2, result;
-
-    std::cout << "Enter the first number" << '\n';
-    std::cin >> num1;
-    
-    std::cout << "Enter the second number" << '\n';
-    std::cin >> num2;
-
-    result = num1 * num2;
-    std::cout << "The product of the two numbers is " << result << '\n';
-}
-
-int division () {
-    double num1, num2, result, rem;
-
-    std::cout << "Enter the first number" << '\n';
-    std::cin >> num1;
-    
-    std::cout << "Enter the second number" << '\n';
-    std::cin >> num2;
-
-    result = num1 / num2;
-    std::cout << "The quotient of the two numbers is " << result << '\n';
-
-    std::cout << "The remainder is " << remainder(num1, num2);
-}
-
-int factorial(){
-    int n;
-    long factorial = 1.0;
-
-    std::cout << "Enter a positive integer: ";
-    std::cin >> n;
-
-    if (n < 0)
-        std::cout << "Error! Factorial of a negative number doesn't exist.";
-    
-    else {
-        for(int i = 1; i <= n; ++i) {
-            factorial *= i;
-        }
-        std::cout << "Factorial of " << n << " = " << factorial;    
-    }
-}
-
-double exponent() {
-    double num1, num2, result;
-
-    std::cout << "Enter the number" << '\n';
-    std::cin >> num1;
-    
-    std::cout << "Enter the exponent's value" << '\n';
-    std::cin >> num2;
-
-    result = pow(num1,num2);
-    std::cout << "The result of the exponent is " << result << '\n';
-
-}
-
-double sqrt() {
-    double num1, result;
-
-    std::cout << "Enter the value of number whose root is required\n";
-    std::cin >> num1;
-
-    result = sqrt(num1);
-    std::cout << "The square root of " << num1 << " is " << result << '\n';
-}
-
-int absolute() {
-    int num1, num2, result;
-
-    std::cout << "Enter the value of the number whose absolute is required \n";
-    std::cin >> num1;
-
-    result = abs(num1);
-    std::cout << "The absolute value of " << num1 << " is " << result << '\n';
-
-}
 
 int main() {
-    char operation;
-    double num1, num2, result, remainder; 
+    int choice;
+    char lavel,  y, n;
+    double temperature, celsius, farhenheit, kelvin;
 
-    std::cout << "Enter the arithmetic operator (+ or - or * or / or ! or ^ or ` or |)" << '\n';
-    std::cin >> operation;
+    std::cout << "\nTemperature converter program \n";
+    std::cout << "1. Celsius to Farhenheit \n2. Celsius to Kelvin\n3. Farhenheit to Celsius\n4. Farhenheit to Kelvin\n5. Kelvin to Celsius\n6. Kelvin to Farhenheit\n\n";
+    std::cout << "Enter you choice in terms of 1, 2, 3, 4, 5 or 6\n";
+    std::cin >> choice;
+    
+    if(choice == 1) {
+        std::cout << "Enter the temperature\n";
+        std::cin >> celsius;
 
-    switch(operation) {
-        case '+':
-            addition();
-            break;
-        
-        case '-':
-            subtraction();
-            break;
-        
-        case '*':
-            multiplication();
-            break;
+        farhenheit = celsius * 1.8 + 32;
+        std::cout << "The temperature in farhenheit is " << farhenheit << '\n';
+    }
+    else if (choice == 2) {
+        std::cout << "Enter the temperature\n";
+        std::cin >> celsius;
 
-        case '/':
-            division();
-            break;
+        kelvin = celsius + 273.15;
+        std::cout << "The temperature in kelvin is " << kelvin << '\n';
+    }
+    else if(choice == 3) {
+        std::cout << "Enter the temperature\n";
+        std::cin >> farhenheit;
 
-        case '!':
-            factorial();
-            break;
+        celsius = (farhenheit - 32) * 0.56;
+        std::cout << "The temperature in celsius is " << celsius << '\n';
+    }
+    else if (choice == 4) {
+        std::cout << "Enter the temperature\n";
+        std::cin >> farhenheit;
 
-        case '^':
-            exponent();
-            break;
-        
-        case '`':
-            sqrt();
-            break;
+        celsius = (farhenheit - 32) * 0.56;
+        kelvin = celsius + 273.15;
 
-        case '|':
-            absolute();
-            break;
+        std::cout << "The temperature in kelvin is " << kelvin << '\n';
+    }
+    else if (choice == 5) {
+        std::cout << "Enter the temperature\n";
+        std::cin >> kelvin;
 
-        default:
-            std::cout << "Please enter correct operations";
+        celsius = kelvin - 273.15;
+        std::cout << "The temperature in celsius is " << celsius << '\n';
+    }
+    else if (choice == 6) {
+        std::cout << "Enter the temperature\n";
+        std::cin >> kelvin;
+
+        farhenheit = (kelvin - 273.15) * 1.8 + 32;
+        std::cout << "The temperature in farhenheit is " << farhenheit << '\n';
     }
 
-    return 0;
+    else {
+        std::cout << "Invalid choice\n";
+    }    
+       
+    std::cout << "Do you want to begin with a new conversion? Reply with a yes (Y) or no (N) \n";
+    std::cin >> lavel;
+
+        switch(lavel) {
+            case 'Y': 
+                main();
+                break;
+
+            case 'N':
+                std::cout << "Thank you for using\n";
+                break;
+
+            default:
+                std::cout << "Please enter a valid choice\n";
+                break;
+        }
+
+return 0;
 }
